@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-var count = -1;
+﻿bool firstLine = true;
 var tableCount = 0;
 int[] input = new int[1];
 var bingoTables = new BingoTable[100];
@@ -12,10 +10,10 @@ for (var i = 0; i< 100; i++)
 var lines = File.ReadLines("day4.txt");
 foreach (var line in lines)
 {
-    count++;
-    if (count == 0)
+    if (firstLine)
     {
         input = line.Split(',').Select(n => int.Parse(n)).ToArray();
+        firstLine = false;
         continue;
     }
     if (string.IsNullOrWhiteSpace(line))
